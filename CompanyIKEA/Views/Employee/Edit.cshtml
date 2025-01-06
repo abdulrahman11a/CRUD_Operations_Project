@@ -1,0 +1,11 @@
+﻿@model EmployeeUpdateDto
+@{
+    ViewData["Title"] = "Edit Employee";
+    ViewBag.Action = "Update";
+}
+<partial name="_createUpdatePartial" ,model="@Model">
+
+    @section viladtion {
+        <partial name="_ValidationScriptsPartial" />
+}
+

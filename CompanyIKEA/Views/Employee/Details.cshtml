@@ -1,0 +1,105 @@
+﻿@model EmployeeDetailsDTO
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<h1 class="text-center my-4">Employee Details</h1>
+
+<div class="container">
+    <div class="card shadow-sm rounded">
+        <div class="card-body">
+            <div class="row mb-3">
+                <!-- Employee Name -->
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Name:</label>
+                    <p class="form-control-plaintext">@Model.Name</p>
+                </div>
+
+                <!-- Employee Age -->
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Age:</label>
+                    <p class="form-control-plaintext">@Model.Age</p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <!-- Employee Address -->
+                <div class="col-md-12">
+                    <label class="font-weight-bold">Address:</label>
+                    <p class="form-control-plaintext">@Model.Address</p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <!-- Employee Salary -->
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Salary:</label>
+                    <p class="form-control-plaintext">@Model.Salary.ToString("C")</p>
+                </div>
+
+                <!-- Employee Email -->
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Email:</label>
+                    <p class="form-control-plaintext">@Model.Email</p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <!-- Employee PhoneNumber -->
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Phone Number:</label>
+                    <p class="form-control-plaintext">@Model.PhoneNumber</p>
+                </div>
+
+                <!-- Employee Gender -->
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Gender:</label>
+                    <p class="form-control-plaintext">@Model.Gender</p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <!-- Employee Type -->
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Employee Type:</label>
+                    <p class="form-control-plaintext">@Model.EmpType</p>
+                </div>
+
+                <!-- Employee IsActive -->
+                <div class="col-md-6">
+                    <label class="font-weight-bold">Active:</label>
+                    <p class="form-control-plaintext">@Model.IsActive</p>
+                </div>
+            </div>
+
+            <div class="text-right mt-4">
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit Employee</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .card {
+        border: none;
+    }
+
+    .form-control-plaintext {
+        padding: 0.375rem 0.75rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        background-color: #f8f9fa;
+    }
+
+    .btn {
+        margin-left: 0.5rem; /* Add some space between buttons */
+    }
+</style>

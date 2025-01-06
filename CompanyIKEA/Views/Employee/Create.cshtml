@@ -1,0 +1,18 @@
+﻿@model EmployeeCreateDto
+@{
+    ViewData["Title"] = "Create Employee";
+    ViewBag.Action = "Create";
+}
+
+<partial name="_createUpdatePartial" ,model="@Model" />
+
+@section viladtion {
+@* this Not Work if call this     <script src="~/lib/jquery/dist/jquery.min.js"></script> After two line Validation iwont call      <script src="~/lib/jquery/dist/jquery.min.js"></script> Before Validation 
+
+ClR You Compile for This Put in Section Call Lib then call viladtion *@
+    @* <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>*@@* Use Production  *@
+@* <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script> *@ @* this if you wont Debug *@
+
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -1,0 +1,116 @@
+﻿@model CommonCreateAndUpdate
+@inject IDepartmentService Department
+@{
+    var department = new SelectList(Department.GetAll(), nameof(DepartmetGetAllDTO.Id), nameof(DepartmetGetAllDTO.Name));
+
+}
+
+            @* In the URL: The generated URL from the form's asp-route-id would not include an id parameter.
+            For example, the URL might look like /Employee/Update instead of /Employee/Update/1.
+            This means that when the form is submitted, the id parameter will be null. *@
+<h1 class="text-center my-4"> @ViewBag.Title </h1>
+<div class="container">
+    <div class="card shadow-sm rounded">
+        <div class="card-body">
+            <form asp-action="@ViewBag.Action" method="post" class="p-4" 
+                  asp-route-id="@(ViewBag.primary != null ? ViewBag.primary : null)">
+
+                <div class="form-row">
+                    <!-- Name -->
+                    <div class="form-group col-md-6">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter employee name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group col-md-6">
+                        <label asp-for="Age"></label>
+                        <input asp-for="Age" class="form-control" placeholder="Enter employee age" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Address -->
+                    <div class="form-group col-md-12">
+                        <label asp-for="Address"></label>
+                        <input asp-for="Address" class="form-control" placeholder="Enter address" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Department -->
+                    <div class="form-group col-md-12">
+                        <label asp-for="DepartmentId"></label>
+                        <select asp-for="DepartmentId" asp-items="department" class="form-control">
+                            <option value="">--Select Department--</option>
+                        </select>
+                        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <!-- Salary -->
+                    <div class="form-group col-md-6">
+                        <label asp-for="Salary"></label>
+                        <input asp-for="Salary" class="form-control" placeholder="Enter salary" />
+                        <span asp-validation-for="Salary" class="text-danger"></span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group col-md-6">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" placeholder="Enter email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- PhoneNumber -->
+                    <div class="form-group col-md-6">
+                        <label asp-for="PhoneNumber"></label>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <!-- IsActive -->
+                    <div class="form-group col-md-6">
+                        <div class="custom-control custom-checkbox mt-4">
+                            <input asp-for="IsActive" class="custom-control-input" id="isActiveCheck" />
+                            <label asp-for="IsActive" class="custom-control-label" for="isActiveCheck">Active</label>
+                        </div>
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Gender -->
+                    <div class="form-group col-md-6">
+                        <label asp-for="Gender"></label>
+                        <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control">
+                            <option value="">Select Gender</option>
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+
+                    <!-- EmployeeType -->
+                    <div class="form-group col-md-6">
+                        <label asp-for="EmpType"></label>
+                        <select asp-for="EmpType" asp-items="Html.GetEnumSelectList<EmployeeType>()" class="form-control">
+                            <option value="">Select Employee Type</option>
+                        </select>
+                        <span asp-validation-for="EmpType" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="text-right mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg px-4">Create</button>
+                    <a asp-action="Index" class="btn btn-secondary btn-lg px-4 ml-2">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

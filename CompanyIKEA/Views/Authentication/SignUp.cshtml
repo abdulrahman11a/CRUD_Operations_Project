@@ -1,0 +1,149 @@
+﻿
+<style>
+    body {
+        background-color: #080710;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    form {
+        width: 80%; /* Increased width to 80% of the viewport */
+        max-width: 800px; /* Max width for larger screens */
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        color: #ffffff;
+    }
+
+    h1 {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 28px;
+    }
+
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.15);
+        border: none;
+        border-radius: 5px;
+        padding: 15px;
+        color: #fff;
+    }
+
+        .form-control::placeholder {
+            color: #ddd;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.25);
+            border-color: #fff;
+        }
+
+    .form-check-label {
+        color: #e5e5e5;
+    }
+
+    .btn-primary {
+        background-color: #ffffff;
+        color: #080710;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #f1f1f1;
+        }
+
+    .social-container {
+        display: flex;
+        justify-content: space-around;
+        gap: 15px;
+    }
+
+    .social {
+        display: inline-block;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: white;
+    }
+
+        .social:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+</style>
+@model SignUpViewModel
+
+@{
+    ViewData["Title"] = "Sign Up";
+    Layout = "~/Views/Shared/_Authen.cshtml";
+}
+
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form asp-action="SignUp" method="post">
+            <h1>Sign Up</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span asp-validation-summary="All" class="text-danger mb-3"></span>
+
+            <div class="form-group mb-3">
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" class="form-control" placeholder="User Name" required />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" placeholder="Email" type="email" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" placeholder="Password" type="password" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" type="password" required />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3 form-check">
+                <input asp-for="isAgree" class="form-check-input" type="checkbox" id="isAgree" required />
+                <label class="form-check-label" for="isAgree">I agree to the terms and conditions</label>
+                <span asp-validation-for="isAgree" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>         
+            <a asp-action="SignIn" class="btn btn-primary btn-block">SignIn</a>
+        </form>
+    </div>
+</div>
+
+@section ValidationScripts {
+    <partial name="_ValidationScriptsPartial"></partial>
+}

@@ -1,0 +1,36 @@
+﻿@model SignViewModel
+@{
+    ViewData["Title"] = "SignIn";
+    Layout = "~/Views/Shared/_Authen.cshtml";
+}
+<form asp-action="SignIn" method="post">
+    <h3>Login Here</h3>
+
+    <div>
+        <label for="Email">Email</label>
+        <input asp-for="Email" placeholder="Email" id="username">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label for="Password">Password</label>
+        <input asp-for="Password" placeholder="Password" id="password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="checkbox-container">
+        <input asp-for="RememberMe" type="checkbox">
+        <label for="RememberMe">Remember Me</label>
+        <span asp-validation-for="RememberMe" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Sign In</button>
+
+    <div class="social">
+        <div class="google"><i class="fab fa-google"></i> Google</div>
+        <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+    </div>
+</form>
+@section ValidationScripts {
+    <partial name="_ValidationScriptsPartial" />
+}
